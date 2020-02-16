@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type" charset="utf-8">
+    <link rel="stylesheet" href="static/styles/main.css" />
+  </head>
+  <body>
+
+      <div id="A">
+        <p class='top'>パンフレット管理</p>
+      </div>
+
+    <div id="B">
+      <p><a href='/templates/place.html'>保管場所について</a></p>
+      <P>追加と編集</P>
+
+      <form action="/n&d" method="get" class='input'>
+        <label>パンフレット名:<input type="text" name="panfname" value='パンフレット名'></label>
+        <label>期限:<input type="date" name="deadline" value='期限'></label>
+        <label>保管場所:<input type="text" name="place" value='保管場所'></label>
+        <input type="submit" value="決定">
+      </form>
+
+      <p>名前で検索</p>
+      <form action="/search" method="get" class='input'>
+        <label>パンフレット名:<input type="text" name="panfname_s" value='パンフレット名'></label>
+        <input type="submit" value="決定">
+      </form>
+
+      <p>期限で検索</p>
+      <form action="/search_d" method="get" class='input'>
+        <label>期限:<input type="date" name="deadline_s" value='期限'></label>
+        <input type="submit" value="決定">
+      </form>
+
+      <p>保管場所で検索</p>
+      <form action="/search_p" method="get" class='input'>
+        <label>保管場所:<input type="text" name="search_p" value='保管場所'></label>
+        <input type="submit" value="決定">
+      </form>
+
+      <p>削除</p>
+      <form action="/delete" method="get" class='input'>
+        <label>パンフレット名:<input type="text" name="delete" value='パンフレット名'></label>
+        <input type="submit" value="決定">
+      </form>
+
+      <p>トップページ</p>
+      <form action="/" method="get" class='input'>
+        <input type="submit" value="トップ">
+      </form>
+
+      
+    </div>
+
+    <div id="C">
+      <div>
+      {% if data %}
+      {% for name,deadline in data.items() %}
+      <table>
+        <div class = "table">
+          <th>{{ name }}</th>
+          <th>{{ deadline[0] }}</th>
+          <th>{{ deadline[1] }}</th>
+        </div>
+      </table>    
+    
+
+      {% endfor %}
+      {% endif %}
+      </div>
+
+
+      <div>
+
+      {% if data2 %}
+        {% for name,deadline in data2.items() %}
+        <table>
+          <div class = "table">
+            <th>{{ name }}</th>
+            <th>{{ deadline[0] }}</th>
+            <th>{{ deadline[1] }}</th>
+          </div>
+        </table>    
+
+        <form action="/" method="get" class='back'>
+          <input type="submit" value="戻る">
+        </form>
+        {% endfor %}
+
+      {% endif %}
+
+      </div>
+
+
+      <div>
+        {% if data3 %}
+        {% for name,deadline in data3.items() %}
+        <table>
+          <div class = "table">
+            <th>{{ name }}</th>
+            <th>{{ deadline[0] }}</th>
+            <th>{{ deadline[1] }}</th>
+          </div>
+        </table>    
+        {% endfor %}
+        <form action="/" method="get" class='back'>
+          <input type="submit" value="戻る">
+        </form>
+        {% endif %}
+        </div>
+
+        <div>
+          {% if data4 %}
+          {% for name,deadline in data4.items() %}
+          <table>
+            <div class = "table">
+              <th>{{ name }}</th>
+              <th>{{ deadline[0] }}</th>
+              <th>{{ deadline[1] }}</th>
+            </div>
+          </table>    
+        
+    
+          {% endfor %}
+          <form action="/" method="get" class='back'>
+            <input type="submit" value="戻る">
+          </form>
+          {% endif %}
+          </div>
+
+          <div>
+            {% if data5 %}
+            {% for name,deadline in data5.items() %}
+            <table>
+              <div class = "table">
+                <th>{{ name }}</th>
+                <th>{{ deadline[0] }}</th>
+                <th>{{ deadline[1] }}</th>
+              </div>
+            </table>    
+          
+      
+            {% endfor %}
+            <form action="/" method="get" class='back'>
+              <input type="submit" value="戻る">
+            </form>
+            {% endif %}
+            </div>
+
+            <div>
+              {% if data6 %}
+              {% for name,deadline in data6.items() %}
+              <table>
+                <div class = "table">
+                  <th>{{ name }}</th>
+                  <th>{{ deadline[0] }}</th>
+                  <th>{{ deadline[1] }}</th>
+                </div>
+              </table>    
+  
+        
+              {% endfor %}
+              <form action="/" method="get" class='back'>
+                <input type="submit" value="戻る">
+              </form>
+              {% endif %}
+              </div>
+      
+    </div>
+     
+    <div id="D">
+    </div>
+
+
+  </body>
+</html>
