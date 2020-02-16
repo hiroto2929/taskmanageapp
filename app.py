@@ -21,6 +21,9 @@ def index():
             name_deadline_dict[row[0]]=list_index
 
     return render_template('index.html',data=name_deadline_dict)
+@app.route('/place')
+def place():
+    return render_template('place.html')
 
 
 @app.route('/n&d')
