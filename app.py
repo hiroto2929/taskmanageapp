@@ -1,7 +1,7 @@
 from flask import Flask, render_template,request
 import csv
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path='static')
 
 name_deadline_dict={}
 
@@ -23,7 +23,7 @@ def index():
     return render_template('index.html',data=name_deadline_dict)
 @app.route('/place')
 def place():
-    return render_template('place.html')
+    return render_template('place.html'
 
 
 @app.route('/n&d')
