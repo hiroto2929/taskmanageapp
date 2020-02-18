@@ -37,6 +37,7 @@ button {
 
 body {
   background-image: url("/static/images/image1.jpg");
+  background-size:cover;
 }
 form.input {
   border: 1px solid #444;
