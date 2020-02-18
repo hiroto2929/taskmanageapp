@@ -75,7 +75,7 @@ body {
 
 #A {
   height:150px;
-  background-color:red;
+  background-color:#6CAF8D;
 }
 
 
@@ -83,7 +83,7 @@ body {
   width:250px;
   min-height:1500px;
   height:auto ;
-  background-color:gray;
+  background-color:#6CAF8D;
   float:right;
   margin-top:10px;
 }
@@ -93,14 +93,14 @@ body {
   width:720px;
   min-height:1500px;
   height:auto;
-  background-color:yellow;
+  background-color:#6CAF8D;
   margin-top:10px;
 }
 
 
 #D { 
   height:100px;
-  background-color:green;
+  background-color:#6CAF8D;
   margin-top:10px;
 }
 
