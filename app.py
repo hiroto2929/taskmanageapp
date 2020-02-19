@@ -2,7 +2,6 @@ from flask import Flask, render_template,request
 import csv
 
 app = Flask(__name__)
-
 name_deadline_dict={}
 
 
@@ -15,12 +14,12 @@ def index():
         reader = csv.reader(f)
         for row in reader:
             list_index=[]
-            row[1]=row[1].replace('-','/')
             list_index.append(row[1])
             list_index.append(row[2])
             name_deadline_dict[row[0]]=list_index
 
     return render_template('index.html',data=name_deadline_dict)
+
 @app.route('/place')
 def place():
     return render_template('place.html')
@@ -29,7 +28,7 @@ def place():
 @app.route('/n&d')
 def nd():
 
-    name_deadline_dict_nd={}
+    name_type_dict_nd={}
 
 
     with open('data.csv') as f:
@@ -38,39 +37,38 @@ def nd():
             list_nd=[]
             list_nd.append(row[1])
             list_nd.append(row[2])
-            name_deadline_dict_nd[row[0]]=list_nd
+            name_type_dict_nd[row[0]]=list_nd
 
     list1=[]
     sorted_name_deadline_dict={}
+    
     panfname = request.args.get('panfname','')
-    deadline = request.args.get('deadline','')
+    panf_type = request.args.get('type','')
     place = request.args.get('place','')
-    deadline=deadline.replace('/','-')
+
     list2=[]
-    list2.append(deadline)
+    list2.append(panf_type)
     list2.append(place)
 
 
     #要素を追加
-    name_deadline_dict_nd[panfname] = list2
+    name_type_dict_nd[panfname] = list2
     
     #辞書からリストに戻してソートしてまた辞書に戻す
-    for i,j in name_deadline_dict_nd.items():
+    for i,j in name_type_dict_nd.items():
         list2=[]
         list2.append(i)
         list2.append(j[0])
         list2.append(j[1])
         list1.append(list2)
-    sorted_data = sorted(list1,key=lambda x:x[1])
 
     with open('data.csv','w') as q:
         writer = csv.writer(q,lineterminator='\n')
-        for m in sorted_data:
+        for m in list1:
             writer.writerow(m)
 
-    for k in sorted_data:
+    for k in list1:
         list3=[]
-        k[1]=k[1].replace('-','/')
         list3.append(k[1])
         list3.append(k[2])
         sorted_name_deadline_dict[k[0]]=list3
@@ -104,31 +102,33 @@ def search_n():
 
     return render_template('index.html',data2=search_dict)
       
-@app.route('/search_d')
-def search_d():
-    deadline_s = request.args.get('deadline_s','')
-    search_dict2={}
-    name_deadline_dict_serd={}
+                
+@app.route('/search_t')
+def search_t():
+    panftype= request.args.get('type','')
+    searcht_dict={}
+    name_type_dict={}
 
     with open('data.csv') as f:
         reader = csv.reader(f)
         for row in reader:
-            name_deadline_dict_serd[row[0]]=row[1]
-            if deadline_s == name_deadline_dict_serd[row[0]]:
-                list_d=[]
-                row[1]=row[1].replace('-','/')
-                list_d.append(row[1])
-                list_d.append(row[2])
-                
-                search_dict2[row[0]]=list_d
+            name_type_dict[row[0]]=row[1]
+            if panftype == row[1]:
+                list_t=[]
+                list_t.append(row[1])
+                list_t.append(row[2])
+                searcht_dict[row[0]]=list_t
 
-    if len(search_dict2)==0:
+        
+    if len(searcht_dict)==0:
         list_non=[]
         list_non.append(' ')
         list_non.append('検索に該当する情報がありません')
-        search_dict2[' ']=list_non
+        searcht_dict[' ']=list_non
 
-    return render_template('index.html',data3=search_dict2)
+    return render_template('index.html',data3=searcht_dict)
+
+
 
 
 @app.route('/search_p')
