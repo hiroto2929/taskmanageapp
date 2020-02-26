@@ -1,0 +1,36 @@
+body {
+    width:980px;
+    margin:0 auto;
+}
+
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#A {
+    height:150px;
+    background-color:#DDFFFF;
+  }
+  
+  
+  #B {
+    width:250px;
+    min-height:1500px;
+    height:auto ;
+    background-color:#DDFFFF;
+    float:right;
+    margin-top:10px;
+  }
+  
+  
+  #C { 
+    width:720px;
+    min-height:1500px;
+    height:auto;
+    background-color:#DDFFFF;
+    margin-top:10px;
+  }
