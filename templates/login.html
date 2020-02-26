@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+
+    <meta http-equiv="content-type" charset="utf-8">
+    <link rel="stylesheet" href="static/styles/login.css">
+</head>
+<body>
+    <div id = "A">
+        {% if session['logged_in'] %}
+        <p>You're logged in already!</p>
+        {% else %}
+        <form action="/login" method="POST">
+            <blockquote>
+        <input type="username" name="username" placeholder="Username"><br />
+        <input type="password" name="password" placeholder="Password"><br />
+            </blockquote>
+        <input type="submit" value="Log in">
+        </form>
+
+        <p>新規登録</p>
+        <form action="/register">
+        <input type="submit" value="register">
+        </form>
+
+
+        {% endif %}
+    </div>
+    <div id="B">
+        <p>サイド</p>
+    </div>
+    <div id = "C">
+        {% if alr %}
+        <p>{{ alr }}</p>
+        {% endif %}
+    </div>
+
+    
+    
+</body>
+</html>
